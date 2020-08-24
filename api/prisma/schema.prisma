@@ -1,0 +1,42 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator prisma_client {
+  provider = "prisma-client-js"
+}
+
+// model World {
+//   id         Int    @id @default(autoincrement())
+//   name       String @unique
+//   population Float
+// }
+
+model User {
+  id        Int     @id @default(autoincrement())
+  email     String  @unique
+  firstName String?
+  lastName  String?
+  phone     String?
+  role      Role    @default(EMPLOYEE)
+  company   Company @relation(fields: [companyId], references: [id])
+  companyId Int
+}
+
+model Company {
+  id          Int    @id
+  companyName String
+  User        User[]
+}
+
+model Inventory {
+  id          Int    @id @default(autoincrement())
+  productName String
+  quantity    Int
+}
+
+enum Role {
+  EMPLOYEE
+  ADMIN
+}
