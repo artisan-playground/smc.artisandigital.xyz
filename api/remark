@@ -1,0 +1,17 @@
+- 1 - Run docker for local database
+docker run --detach --publish 5432:5432 -e POSTGRES_PASSWORD=postgres --name postgres postgres:10.12
+
+
+- 2 - สร้าง migration ก่อนอัพ
+npx prisma migrate save --experimental
+
+3 อัพเข้า postgres
+npx prisma migrate up --experimental
+
+4 ลบ Table ออกจาก postgres
+npx prisma migrate down --experimental
+or
+npx prisma migrate down 1 --experimental
+
+5 Gen schema เข้า nodemodule
+yarn -s prisma generate

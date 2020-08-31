@@ -5,15 +5,20 @@ const db = new PrismaClient()
 main()
 
 async function main() {
-  const worlds = [
-    {
-      name: 'Earth',
-      population: 6_000_000_000,
-    },
-    {
-      name: 'Mars',
-      population: 0,
-    },
+  const users = [
+    // {
+    //   email    : "parameschotana@gmail.com",
+    //   firstName: "parames",
+    //   lastName : "chotana",
+    //   phone    : "0805656828",
+    //   role     : EMPLOYEE,
+    //   company  : "",
+    //   companyId: "",
+    // },
+    // {
+    //   name: 'Mars',
+    //   population: 0,
+    // },
   ]
 
   // Could use Promise.all
@@ -21,8 +26,8 @@ async function main() {
 
   let results = []
 
-  for (const world of worlds) {
-    results.push(await db.world.create({ data: world }))
+  for (const user of users) {
+    results.push(await db.user.create({ data: user }))
   }
 
   console.log('Seeded: %j', results)
