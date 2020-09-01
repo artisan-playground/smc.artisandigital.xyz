@@ -22,8 +22,9 @@ scalar Json
 
 type Query {
   getCompanies: [Company!]
-  getCompany(id: Int!): Company
-  users: [User!]
+  getCompanyById(id: Int!): Company
+  getUserById(id: Int!): User
+  getUsers: [User!]
 }
 
 enum Role {

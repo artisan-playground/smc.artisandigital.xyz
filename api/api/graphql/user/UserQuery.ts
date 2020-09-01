@@ -1,27 +1,27 @@
 import { schema } from 'nexus'
 
-export const GetCompanies = schema.extendType({
+export const GetUsers = schema.extendType({
   type: 'Query',
   definition: (t) => {
-    t.list.field('getCompanies', {
-      type: 'Company',
-      resolve(_, args, ctx) {
-        return ctx.db.company.findMany()
+    t.list.field('getUsers', {
+      type: 'User',
+      resolve(_root, _args, ctx) {
+        return ctx.db.user.findMany()
       },
     })
   },
 })
 
-export const GetCompanyById = schema.extendType({
+export const GetUsersById = schema.extendType({
   type: 'Query',
   definition: (t) => {
-    t.field('getCompanyById', {
-      type: 'Company',
+    t.field('getUserById', {
+      type: 'User',
       args: {
         id: schema.intArg({ required: true }),
       },
       resolve(_, { id }, ctx) {
-        return ctx.db.company.findOne({
+        return ctx.db.user.findOne({
           where: {
             id: id,
           },
