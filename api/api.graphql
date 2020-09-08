@@ -15,6 +15,19 @@ A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the
 """
 scalar DateTime
 
+type History {
+  createdAt: DateTime!
+  id: Int!
+  updatedAt: DateTime!
+  user: User!
+}
+
+type Inventory {
+  id: Int!
+  productName: String!
+  quantity: Int!
+}
+
 """
 The `JSON` scalar type represents JSON objects as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
 """
@@ -23,6 +36,10 @@ scalar Json
 type Query {
   getCompanies: [Company!]
   getCompanyById(id: Int!): Company
+  getHistories: [History!]
+  getHistoryById(id: Int!): History
+  getProductById(id: Int!): Inventory
+  getProducts: [Inventory!]
   getUserById(id: Int!): User
   getUsers: [User!]
 }
