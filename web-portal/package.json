@@ -14,9 +14,12 @@
     "postcss-preset-env": "6.7.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",
+    "sass": "^1.26.10",
+    "scss": "^0.2.4",
     "tailwindcss": "1.7.3"
   },
   "devDependencies": {
+    "@apollo/client": "^3.1.4",
     "@babel/core": "^7.11.4",
     "@storybook/addon-actions": "^6.0.20",
     "@storybook/addon-essentials": "^6.0.20",
@@ -24,6 +27,7 @@
     "@storybook/react": "^6.0.20",
     "babel-loader": "^8.1.0",
     "cypress": "^5.0.0",
+    "graphql": "^15.3.0",
     "react-is": "^16.13.1"
   }
 }
