@@ -1,7 +1,10 @@
 import Link from 'next/link'
+import { useQuery } from '@apollo/client'
 import LayoutAdmin from '../../../components/Layouts/Admin'
+import { GET_USERS } from '../../../graphql/query/user'
 
 const userIndexPage = () => {
+  const { data } = useQuery(GET_USERS)
   return (
     <LayoutAdmin>
       <div>
@@ -17,19 +20,23 @@ const userIndexPage = () => {
           <table className="table-auto">
             <thead>
               <tr>
-                <th className="px-4 py-2">name</th>
-                <th className="px-4 py-2">name</th>
-                <th className="px-4 py-2">name</th>
-                <th className="px-4 py-2">name</th>
+                <th className="px-4 py-2">first name</th>
+                <th className="px-4 py-2">last name</th>
+                <th className="px-4 py-2">email</th>
+                <th className="px-4 py-2">phone</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td className="border px-4 py-2">name</td>
-                <td className="border px-4 py-2">name</td>
-                <td className="border px-4 py-2">name</td>
-                <td className="border px-4 py-2">name</td>
-              </tr>
+              {data?.getUsers.map((d, index) => {
+                return (
+                  <tr key={index}>
+                    <td className="border px-4 py-2">{d.firstName}</td>
+                    <td className="border px-4 py-2">{d.lastName}</td>
+                    <td className="border px-4 py-2">{d.email}</td>
+                    <td className="border px-4 py-2">{d.phone}</td>
+                  </tr>
+                )
+              })}
             </tbody>
           </table>
         </div>
